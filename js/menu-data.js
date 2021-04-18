@@ -1,4 +1,4 @@
-/*global np,
+/* global np,
           $dlgAbout,
           $menubar,
           $statusBar,
@@ -207,11 +207,29 @@ np.menuData = [{
     }
   }, {
     title: '字体(F)...',
-    shortcuy: np.fontFamily,
+    shortcut: '',
+    enabled: true,
+    handler: () => $dlgFont.show({
+      family: np.fontFamily,
       style: np.fontStyle,
       size: np.fontSize,
       okHandler: np.fontHandler
-    })wStatusBar);
+    })
+  }],
+  width: '156px',
+  left: '106px'
+}, {
+  title: '查看(V)',
+  menuItems: [{
+    title: '状态栏(S)',
+    shortcut: '',
+    enabled: true,
+    handler: () => {
+      np.bShowStatusBar = !(typeof(np.bShowStatusBar) === 'boolean' ?
+        np.bShowStatusBar :
+        np.bShowStatusBar === 'true') ;
+      localStorage.setItem('bShowStatusBar', np.bShowStatusBar);
+      $statusBar.display(np.bShowStatusBar);
       $menubar.checked(3, 0, np.bShowStatusBar);
       $editor.resize(np.bShowStatusBar);
     }
@@ -234,21 +252,3 @@ np.menuData = [{
   width: '166px',
   left: '216px'
 }];
-    handler: () => {
-      np.bShowStatusBar = !(typeof(np.bShowStatusBar) === 'boolean' ?
-        np.bShowStatusBar :
-        np.bShowStatusBar === 'true') ;
-      localStorage.setItem('bShowStatusBar', np.bShowStatusBar);
-      $statusBar.display(np.bSho  }],
-  width: '156px',
-  left: '106px'
-}, {
-  title: '查看(V)',
-  menuItems: [{
-    title: '状态栏(S)',
-    shortcut: '',
-    enabled: true,
-t: '',
-    enabled: true,
-    handler: () => $dlgFont.show({
-      famil
